@@ -18,6 +18,8 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
+import com.vku.learnzone.component.TestimonialItem
+import com.vku.learnzone.component.VideoItem
 import com.vku.learnzone.ui.theme.*
 
 @Composable
@@ -35,13 +37,20 @@ fun DetailsScreen(navController: NavController) {
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Icon(
-                    imageVector = Icons.Default.KeyboardArrowLeft,
-                    contentDescription = "",
-                    tint = colorPrimary,
+                Box(
                     modifier = Modifier
-                        .size(32.dp)
-                        .clickable { navController.popBackStack() })
+                        .border(2.dp, colorPrimary, RoundedCornerShape(8.dp))
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.KeyboardArrowLeft,
+                        contentDescription = "",
+                        tint = colorPrimary,
+                        modifier = Modifier
+                            .padding(3.dp)
+                            .size(32.dp)
+                            .clickable { navController.popBackStack() })
+                }
+                Spacer(modifier = Modifier.width(16.dp))
                 Text(
                     text = "3D Design Basic",
                     style = MaterialTheme.typography.h5,
@@ -84,15 +93,17 @@ fun DetailsScreen(navController: NavController) {
                             .fillMaxSize()
                             .padding(20.dp)
                     ) {
-                        FlowerTitleSubtitle()
-                        Spacer(modifier = Modifier.padding(10.dp))
-                        AddtoCartPrice()
+                        CourseTitleSubtitle()
                         Spacer(modifier = Modifier.padding(10.dp))
                         Divider(color = colorPrimaryWhite, thickness = 1.dp)
                         Spacer(modifier = Modifier.padding(20.dp))
-                        FlowerAbout()
+                        CourseAbout()
                         Spacer(modifier = Modifier.padding(20.dp))
-                        FlowerAddtoCartButton(navController)
+                        VideosSection()
+                        Spacer(modifier = Modifier.padding(10.dp))
+                        TestimonialsSection()
+                        Spacer(modifier = Modifier.padding(10.dp))
+                        EnrollButton(navController)
                     }
 
                 }
@@ -103,41 +114,40 @@ fun DetailsScreen(navController: NavController) {
 }
 
 @Composable
-fun FlowerTitleSubtitle() {
+fun CourseTitleSubtitle() {
     Column(modifier = Modifier.fillMaxWidth()) {
         Text(
-            text = "Jannien Flower Bouquet",
+            text = "3D Design Basic",
             style = MaterialTheme.typography.h6,
             color = white
         )
+        Row(verticalAlignment = Alignment.Bottom) {
+            Text(
+                text = "24 lessons,",
+                style = MaterialTheme.typography.caption,
+                color = white
+            )
+            Spacer(modifier = Modifier.width(4.dp))
+            Icon(
+                imageVector = Icons.Default.Star,
+                contentDescription = "Start",
+                tint = white,
+                modifier = Modifier
+                    .size(16.dp)
+            )
+            Text(
+                text = "4.9",
+                fontSize = 10.sp,
+                color = white,
+                fontWeight = FontWeight.Light
+            )
+        }
 
-        Text(
-            text = "includes jannein flower, lily leaves",
-            style = MaterialTheme.typography.caption,
-            color = white
-        )
     }
 }
 
 @Composable
-fun AddtoCartPrice() {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(
-            text = "$567.00",
-            color = white,
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold
-        )
-    }
-}
-
-@Composable
-fun FlowerAbout() {
+fun CourseAbout() {
     Column(modifier = Modifier.fillMaxWidth()) {
         Text(
             text = "About",
@@ -145,11 +155,8 @@ fun FlowerAbout() {
             color = white
         )
         Spacer(modifier = Modifier.padding(5.dp))
-
         Text(
-            text = "Lorem ipsum is simply dummy text of the printing and \n" +
-                    "typesetting industry. Loremk ipsum has been the industy's \n" +
-                    "standard dummy text ever since the 1500s.",
+            text = "In this course, you will learn how to build a space to a 3 dimensional production. There are 24 premium learning videos for you.",
             style = MaterialTheme.typography.caption,
             color = white
         )
@@ -157,35 +164,25 @@ fun FlowerAbout() {
 }
 
 @Composable
-fun FlowerAddtoCartButton(navController: NavController) {
+fun EnrollButton(navController: NavController) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Bottom
     ) {
         Button(
-            onClick = {
-
-            },
-            colors = ButtonDefaults.buttonColors(backgroundColor = white),
+            onClick = { },
             modifier = Modifier
                 .padding(8.dp)
                 .fillMaxWidth()
                 .height(60.dp),
+            colors = ButtonDefaults.buttonColors(backgroundColor = white),
             shape = RoundedCornerShape(16.dp)
         ) {
             Text(
-                text = "Add to Cart",
+                text = "Enroll - $24.99",
                 color = colorPrimary,
                 fontWeight = FontWeight.Bold
-            )
-            Icon(
-                imageVector = Icons.Default.ArrowForward,
-                contentDescription = null,
-                tint = colorPrimary,
-                modifier = Modifier
-                    .padding(start = 4.dp)
-                    .size(20.dp, 20.dp)
             )
         }
     }
@@ -206,63 +203,50 @@ fun HeaderImagesSlider(image: String) {
     )
 }
 
-//    Column(
-//        modifier = Modifier
-//            .background(ghost_white)
-//            .verticalScroll(rememberScrollState())
-//            .padding(bottom = 30.dp)
-//    ) {
-//        Column(
-//            modifier = Modifier
-//                .padding(20.dp)
-//        ) {
-//            Row(
-//                modifier = Modifier.fillMaxWidth(),
-//                verticalAlignment = Alignment.CenterVertically
-//            ) {
-//                Icon(
-//                    imageVector = Icons.Default.KeyboardArrowLeft,
-//                    contentDescription = "",
-//                    tint = colorPrimary,
-//                    modifier = Modifier
-//                        .size(40.dp)
-//                        .clickable { navController.popBackStack() })
-//                Text(
-//                    text = "3D Design Basic",
-//                    style = MaterialTheme.typography.h5,
-//                    fontWeight = FontWeight.Bold
-//                )
-//            }
-//            Spacer(modifier = Modifier.height(10.dp))
-//            Column(
-//                modifier = Modifier
-//                    .fillMaxSize()
-//            ) {
-//                HeaderImage(image = "https://cdn.dribbble.com/users/323673/screenshots/14425154/media/c9766811449634cab83a657a51c8448c.png?compress=1&resize=400x300&vertical=top")
-//                Surface(
-//                    color = colorPrimary,
-//                    shape = RoundedCornerShape(40.dp)
-//                        .copy(
-//                            bottomStart = ZeroCornerSize, bottomEnd = ZeroCornerSize
-//                        ),
-//                    modifier = Modifier.fillMaxSize().
-//                ) {
-//
-//                }
-//            }
-//        }
-//    }
-//}
-//
-//@Composable
-//fun HeaderImage(image: String) {
-//    AsyncImage(
-//        model = image,
-//        contentDescription = "",
-//        contentScale = ContentScale.Crop,
-//        modifier = Modifier
-//            .fillMaxWidth()
-//            .height(200.dp)
-//            .clip(RoundedCornerShape(8.dp))
-//    )
-//}
+@Composable
+fun VideosSection() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = "24 Lessons (20 hours)",
+            style = MaterialTheme.typography.h6,
+            color = white
+        )
+        TextButton(onClick = {}) {
+            Text(
+                text = "See all",
+                color = white
+            )
+        }
+    }
+    Spacer(modifier = Modifier.height(10.dp))
+    VideoItem(icon = "https://cdn.iconscout.com/icon/free/png-256/laravel-226015.png")
+}
+
+@Composable
+fun TestimonialsSection() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = "Testimonials",
+            style = MaterialTheme.typography.h6,
+            color = white
+        )
+        TextButton(onClick = {}) {
+            Text(
+                text = "See all",
+                color = white
+            )
+        }
+    }
+    Spacer(modifier = Modifier.height(10.dp))
+    TestimonialItem()
+}
