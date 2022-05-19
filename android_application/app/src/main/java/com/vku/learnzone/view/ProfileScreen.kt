@@ -13,25 +13,26 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.vku.learnzone.component.CourseItem
 import com.vku.learnzone.ui.theme.*
 import java.util.*
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.unit.toSize
 
 @Composable
 fun ProfileScreen() {
@@ -61,16 +62,18 @@ fun ProfileScreen() {
         }, mYear, mMonth, mDay
     )
 
-    var expanded by remember { mutableStateOf(false) }
-    val suggestions = listOf("Item1", "Item2", "Item3")
-    var selectedText by remember { mutableStateOf("") }
+    var mExpanded by remember { mutableStateOf(false) }
 
-    var textfieldSize by remember { mutableStateOf(Size.Zero) }
+    val mGenders = listOf("Male", "Female")
 
-    val icon = if (expanded)
-        Icons.Filled.KeyboardArrowUp //it requires androidx.compose.material:material-icons-extended
+    var mSelectedText by remember { mutableStateOf("Male") }
+
+    var mTextFieldSize by remember { mutableStateOf(Size.Zero) }
+
+    val icon = if (mExpanded)
+        Icons.Filled.KeyboardArrowUp
     else
-        Icons.Filled.ArrowDropDown
+        Icons.Filled.KeyboardArrowDown
 
     Column(
         modifier = Modifier
@@ -82,11 +85,25 @@ fun ProfileScreen() {
             modifier = Modifier
                 .padding(20.dp)
         ) {
-            Text(
-                text = "Profile",
-                style = MaterialTheme.typography.h5,
-                fontWeight = FontWeight.Bold
-            )
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .wrapContentHeight(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "Profile",
+                    style = MaterialTheme.typography.h5,
+                    fontWeight = FontWeight.Bold
+                )
+                Icon(
+                    imageVector = Icons.Default.Settings,
+                    contentDescription = "Settings",
+                    modifier = Modifier
+                        .clip(CircleShape)
+                        .clickable { })
+            }
             Spacer(modifier = Modifier.height(10.dp))
             Column(
                 modifier = Modifier
@@ -202,29 +219,39 @@ fun ProfileScreen() {
                     )
 
                     Column() {
-                        OutlinedTextField(
-                            value = selectedText,
-                            onValueChange = { selectedText = it },
-                            modifier = Modifier.fillMaxWidth().onSizeChanged {
-                                    dropDownWidth = it.width
-                                },
-                            label = { Text("Label") },
-                            trailingIcon = {
-                                Icon(
-                                    icon,
-                                    "contentDescription",
-                                    Modifier.clickable { expanded = !expanded })
-                            }
-                        )
-                        DropdownMenu(
-                            expanded = expanded,
-                            onDismissRequest = { expanded = false },
+                        TextField(
+                            value = mSelectedText,
+                            colors = TextFieldDefaults.textFieldColors(
+                                backgroundColor = white,
+                                focusedIndicatorColor = Color.Transparent,
+                                unfocusedIndicatorColor = Color.Transparent,
+                                disabledIndicatorColor = Color.Transparent
+                            ),
+                            textStyle = TextStyle(fontWeight = FontWeight.Bold),
                             modifier = Modifier
-                                .width(with(LocalDensity.current) { dropDownWidth.toDp() })
+                                .fillMaxWidth()
+                                .onGloballyPositioned { coordinates ->
+                                    mTextFieldSize = coordinates.size.toSize()
+                                },
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+                            shape = RoundedCornerShape(8.dp),
+                            trailingIcon = {
+                                Icon(icon, "",
+                                    Modifier.clickable { mExpanded = !mExpanded })
+                            },
+                            onValueChange = { mSelectedText = it }
+                        )
+
+                        DropdownMenu(
+                            expanded = mExpanded,
+                            onDismissRequest = { mExpanded = false },
+                            modifier = Modifier
+                                .width(with(LocalDensity.current) { mTextFieldSize.width.toDp() })
                         ) {
-                            suggestions.forEach { label ->
+                            mGenders.forEach { label ->
                                 DropdownMenuItem(onClick = {
-                                    selectedText = label
+                                    mSelectedText = label
+                                    mExpanded = false
                                 }) {
                                     Text(text = label)
                                 }

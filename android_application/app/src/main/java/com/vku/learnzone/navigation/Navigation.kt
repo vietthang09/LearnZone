@@ -22,40 +22,41 @@ import com.vku.learnzone.viewmodel.CourseViewModel
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry?.destination?.route
     Scaffold(
         bottomBar = {
-            BottomNavigation(backgroundColor = white, elevation = 16.dp) {
-                val navBackStackEntry by navController.currentBackStackEntryAsState()
-                val currentRoute = navBackStackEntry?.destination?.route
-
-                Items.items.forEach {
-                    BottomNavigationItem(
-                        icon = {
-                            it.icon?.let { it1 ->
-                                Icon(
-                                    imageVector = it1,
-                                    contentDescription = "",
-                                    tint = if (currentRoute == it.route) colorPrimary else gray
-                                )
-                            }
-                        },
-                        selected = currentRoute == it.route,
-                        onClick = {
-                            if (currentRoute != it.route) {
-                                navController.graph.startDestinationRoute?.let { item ->
-                                    navController.popBackStack(
-                                        item,
-                                        false
+            if (currentRoute != Screen.DetailsScreen.route) {
+                BottomNavigation(backgroundColor = white, elevation = 16.dp) {
+                    Items.items.forEach {
+                        BottomNavigationItem(
+                            icon = {
+                                it.icon?.let { it1 ->
+                                    Icon(
+                                        imageVector = it1,
+                                        contentDescription = "",
+                                        tint = if (currentRoute == it.route) colorPrimary else gray
                                     )
                                 }
-                            }
-                            if (currentRoute != it.route) {
-                                navController.navigate(it.route) {
-                                    launchSingleTop = true
+                            },
+                            selected = currentRoute == it.route,
+                            onClick = {
+                                if (currentRoute != it.route) {
+                                    navController.graph.startDestinationRoute?.let { item ->
+                                        navController.popBackStack(
+                                            item,
+                                            false
+                                        )
+                                    }
+                                }
+                                if (currentRoute != it.route) {
+                                    navController.navigate(it.route) {
+                                        launchSingleTop = true
+                                    }
                                 }
                             }
-                        }
-                    )
+                        )
+                    }
                 }
             }
         }
@@ -67,7 +68,7 @@ fun Navigation() {
 @Composable
 fun ScreenController(navController: NavHostController) {
     val vm = CourseViewModel()
-    NavHost(navController = navController, startDestination = Screen.ProfileScreen.route) {
+    NavHost(navController = navController, startDestination = Screen.HomeScreen.route) {
         composable(Screen.SplashScreen.route) {
             SplashScreen(navController = navController)
         }
@@ -78,13 +79,13 @@ fun ScreenController(navController: NavHostController) {
             SignUpScreen(navController = navController)
         }
         composable(Screen.HomeScreen.route) {
-            HomeScreen(vm)
+            HomeScreen(navController = navController, viewModel = vm)
         }
         composable(Screen.CoursesScreen.route) {
-            CoursesScreen()
+            CoursesScreen(navController = navController)
         }
         composable(Screen.WishlistScreen.route) {
-            WishlistScreen()
+            WishlistScreen(navController = navController)
         }
         composable(Screen.ProfileScreen.route) {
             ProfileScreen()

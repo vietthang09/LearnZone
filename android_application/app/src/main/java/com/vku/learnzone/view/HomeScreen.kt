@@ -29,6 +29,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.vku.learnzone.R
 import com.vku.learnzone.component.CourseItem
@@ -36,7 +37,7 @@ import com.vku.learnzone.ui.theme.*
 import com.vku.learnzone.viewmodel.CourseViewModel
 
 @Composable
-fun HomeScreen(viewModel: CourseViewModel) {
+fun HomeScreen(navController: NavController, viewModel: CourseViewModel) {
 //    LaunchedEffect(Unit, block = {
 //        viewModel.getCourseList()
 //    })
@@ -82,7 +83,7 @@ fun HomeScreen(viewModel: CourseViewModel) {
                         .padding(top = 20.dp, end = 20.dp, bottom = 50.dp, start = 20.dp)
                 ) {
                     PromotionSection()
-                    AwesomeCoursesSection()
+                    AwesomeCoursesSection(navController = navController)
                 }
             }
         }
@@ -198,7 +199,7 @@ fun PromotionSection() {
 }
 
 @Composable
-fun AwesomeCoursesSection() {
+fun AwesomeCoursesSection(navController: NavController) {
     Row(
         modifier = Modifier
             .fillMaxWidth(),
@@ -221,7 +222,7 @@ fun AwesomeCoursesSection() {
     Spacer(modifier = Modifier.padding(10.dp))
     CategoryView()
     Spacer(modifier = Modifier.padding(10.dp))
-    CourseItems()
+    CourseItems(navController)
 }
 
 @Composable
@@ -259,14 +260,17 @@ fun CategoryButton(icon: String) {
 }
 
 @Composable
-fun CourseItems() {
+fun CourseItems(navController: NavController) {
     // container
     Column(
         modifier = Modifier
             .fillMaxWidth()
     ) {
         for (i in 1..3) {
-            CourseItem(icon = "https://store.soft365.vn/wp-content/uploads/2018/10/logo-2.png")
+            CourseItem(
+                icon = "https://store.soft365.vn/wp-content/uploads/2018/10/logo-2.png",
+                navController = navController
+            )
             Spacer(modifier = Modifier.height(16.dp))
         }
     }

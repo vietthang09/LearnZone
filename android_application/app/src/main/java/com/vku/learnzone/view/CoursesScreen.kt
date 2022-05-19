@@ -18,12 +18,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.vku.learnzone.component.CourseItem
 import com.vku.learnzone.ui.theme.*
 
 @Composable
-fun CoursesScreen() {
+fun CoursesScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .background(ghost_white)
@@ -45,7 +46,10 @@ fun CoursesScreen() {
                     .fillMaxSize()
             ) {
                 for (i in 1..7) {
-                    CourseItem(icon = "https://store.soft365.vn/wp-content/uploads/2018/10/logo-2.png")
+                    CourseItem(
+                        icon = "https://store.soft365.vn/wp-content/uploads/2018/10/logo-2.png",
+                        navController = navController
+                    )
                     Spacer(modifier = Modifier.height(16.dp))
                 }
             }

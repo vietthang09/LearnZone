@@ -1,6 +1,7 @@
 package com.vku.learnzone.component
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
@@ -15,14 +16,17 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
+import com.vku.learnzone.navigation.Navigation
+import com.vku.learnzone.navigation.Screen
 import com.vku.learnzone.ui.theme.black
 import com.vku.learnzone.ui.theme.colorPrimary
 import com.vku.learnzone.ui.theme.gray
 import com.vku.learnzone.ui.theme.white
 
 @Composable
-fun CourseItem(icon: String) {
+fun CourseItem(icon: String, navController: NavController) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -30,6 +34,7 @@ fun CourseItem(icon: String) {
             .fillMaxWidth()
             .clip(RoundedCornerShape(16.dp))
             .background(white)
+            .clickable { navController.navigate(Screen.DetailsScreen.route) }
     ) {
         // Image
         AsyncImage(
