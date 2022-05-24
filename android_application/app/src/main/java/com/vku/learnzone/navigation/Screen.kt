@@ -20,7 +20,8 @@ sealed class Screen(
     object WishlistScreen : Screen("wishlist_screen", Icons.Default.Favorite)
     object ProfileScreen : Screen("profile_screen", Icons.Default.Person)
     object DetailsScreen : Screen("details_screen")
-    object PopularListScreen : Screen("popular_list_screen")
+    object AwesomeCoursesScreen : Screen("awesome_courses_screen")
+    object CategoriesScreen : Screen("categories_screen")
 }
 
 object Items {

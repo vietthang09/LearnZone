@@ -1,38 +1,25 @@
 package com.vku.learnzone.view
 
-import android.widget.Space
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.shape.ZeroCornerSize
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
-import coil.compose.AsyncImage
 import com.vku.learnzone.R
+import com.vku.learnzone.component.CategoryButton
 import com.vku.learnzone.component.CourseItem
+import com.vku.learnzone.navigation.Screen
 import com.vku.learnzone.ui.theme.*
 import com.vku.learnzone.viewmodel.CourseViewModel
 
@@ -60,7 +47,7 @@ fun HomeScreen(navController: NavController, viewModel: CourseViewModel) {
                         end.linkTo(parent.end)
                     }
             ) {
-                HeaderHome()
+                HeaderHome(navController = navController)
             }
             Surface(
                 color = ghost_white,
@@ -134,7 +121,7 @@ fun HomeScreen(navController: NavController, viewModel: CourseViewModel) {
 }
 
 @Composable
-fun HeaderHome() {
+fun HeaderHome(navController: NavController) {
     Image(
         painter = painterResource(id = R.drawable.login_bg),
         contentDescription = "login_bg",
@@ -156,14 +143,6 @@ fun HeaderHome() {
             letterSpacing = 2.sp,
             modifier = Modifier.padding(start = 120.dp)
         )
-        IconButton(onClick = {}) {
-            Icon(
-                imageVector = Icons.Default.Search,
-                contentDescription = "Search",
-                tint = white,
-                modifier = Modifier.size(32.dp, 32.dp)
-            )
-        }
     }
 }
 
@@ -211,7 +190,9 @@ fun AwesomeCoursesSection(navController: NavController) {
             style = MaterialTheme.typography.h6,
             fontWeight = FontWeight.Bold
         )
-        TextButton(onClick = {}) {
+        TextButton(onClick = {
+            navController.navigate(Screen.CategoriesScreen.route)
+        }) {
             Text(
                 text = "See all",
                 color = colorPrimary,
@@ -220,42 +201,24 @@ fun AwesomeCoursesSection(navController: NavController) {
         }
     }
     Spacer(modifier = Modifier.padding(10.dp))
-    CategoryView()
+    CategoryView(navController = navController)
     Spacer(modifier = Modifier.padding(10.dp))
     CourseItems(navController)
 }
 
 @Composable
-fun CategoryView() {
+fun CategoryView(navController: NavController) {
     Row(
         modifier = Modifier
             .horizontalScroll(rememberScrollState())
     ) {
         for (i in 1..7) {
             CategoryButton(
-                icon = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png"
+                icon = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png",
+                navController = navController
             )
             Spacer(modifier = Modifier.width(16.dp))
         }
-    }
-}
-
-@Composable
-fun CategoryButton(icon: String) {
-    Box(
-        modifier = Modifier
-            .size(72.dp)
-            .background(
-                color = white,
-                shape = RoundedCornerShape(18.dp)
-            )
-            .padding(18.dp)
-    ) {
-        AsyncImage(
-            modifier = Modifier.fillMaxSize(),
-            model = icon,
-            contentDescription = null
-        )
     }
 }
 

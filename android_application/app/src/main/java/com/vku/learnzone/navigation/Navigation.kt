@@ -3,10 +3,7 @@ package com.vku.learnzone.navigation
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -24,9 +21,15 @@ fun Navigation() {
     val navController = rememberNavController()
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
+    val hideBottomNavigationList =
+        listOf(
+            Screen.DetailsScreen.route,
+            Screen.AwesomeCoursesScreen.route,
+            Screen.CategoriesScreen.route
+        )
     Scaffold(
         bottomBar = {
-            if (currentRoute != Screen.DetailsScreen.route) {
+            if (!hideBottomNavigationList.contains(currentRoute)) {
                 BottomNavigation(backgroundColor = white, elevation = 16.dp) {
                     Items.items.forEach {
                         BottomNavigationItem(
@@ -93,8 +96,11 @@ fun ScreenController(navController: NavHostController) {
         composable(Screen.DetailsScreen.route) {
             DetailsScreen(navController = navController)
         }
-        composable(Screen.PopularListScreen.route) {
-            PopularListScreen(navController = navController)
+        composable(Screen.AwesomeCoursesScreen.route) {
+            AwesomeCoursesScreen(navController = navController)
+        }
+        composable(Screen.CategoriesScreen.route) {
+            CategoriesScreen(navController = navController)
         }
     }
 }

@@ -18,7 +18,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
-import com.vku.learnzone.navigation.Navigation
 import com.vku.learnzone.navigation.Screen
 import com.vku.learnzone.ui.theme.black
 import com.vku.learnzone.ui.theme.colorPrimary
