@@ -1,6 +1,7 @@
 package com.vku.learnzone.utils
 
 import com.vku.learnzone.model.Course
+import com.vku.learnzone.model.Video
 
 object Data {
     val categoryList: List<String> = listOf(
@@ -39,6 +40,24 @@ object Data {
             "In this course, you will learn how to build a space to a 3 dimensional production. There are 24 premium learning videos for you.",
             "aa",
             "aa"
+        ),
+    )
+
+    val videoList: List<Video> = listOf(
+        Video(
+            "https://i.pinimg.com/originals/1c/d3/93/1cd3938d1aeafc32b21dc7e5566ef2be.png",
+            "Introduction to 3D",
+            "20"
+        ),
+        Video(
+            "http://verladams.com/gallery/teaching/pre-architecture/rectilinear_volumes/sam_lassiter.jpg",
+            "3D Fundamentals",
+            "22"
+        ),
+        Video(
+            "https://i.ytimg.com/vi/kMi_0HXXaTE/maxresdefault.jpg",
+            "Introduction App",
+            "20"
         ),
     )
 }

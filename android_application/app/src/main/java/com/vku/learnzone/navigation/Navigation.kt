@@ -23,6 +23,8 @@ fun Navigation() {
     val currentRoute = navBackStackEntry?.destination?.route
     val hideBottomNavigationList =
         listOf(
+            Screen.SignInScreen.route,
+            Screen.SignUpScreen.route,
             Screen.DetailsScreen.route,
             Screen.AwesomeCoursesScreen.route,
             Screen.CategoriesScreen.route,
@@ -72,7 +74,7 @@ fun Navigation() {
 @Composable
 fun ScreenController(navController: NavHostController) {
     val vm = CourseViewModel()
-    NavHost(navController = navController, startDestination = Screen.HomeScreen.route) {
+    NavHost(navController = navController, startDestination = Screen.SignInScreen.route) {
         composable(Screen.SplashScreen.route) {
             SplashScreen(navController = navController)
         }

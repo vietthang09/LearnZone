@@ -21,6 +21,7 @@ import coil.compose.AsyncImage
 import com.vku.learnzone.component.TestimonialItem
 import com.vku.learnzone.component.VideoItem
 import com.vku.learnzone.ui.theme.*
+import com.vku.learnzone.utils.Data
 
 @Composable
 fun DetailsScreen(navController: NavController) {
@@ -73,7 +74,7 @@ fun DetailsScreen(navController: NavController) {
                         start.linkTo(parent.start)
                         end.linkTo(parent.end)
                     }) {
-                    HeaderImagesSlider("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png")
+                    HeaderImagesSlider(Data.videoList[0].image)
                 }
                 Surface(color = colorPrimary,
                     shape = RoundedCornerShape(40.dp)
@@ -224,7 +225,7 @@ fun VideosSection() {
         }
     }
     Spacer(modifier = Modifier.height(10.dp))
-    VideoItem(icon = "https://cdn.iconscout.com/icon/free/png-256/laravel-226015.png")
+    VideoItem(Data.videoList[0])
 }
 
 @Composable
