@@ -7,13 +7,11 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -27,7 +25,7 @@ import com.vku.learnzone.ui.theme.gray
 import com.vku.learnzone.ui.theme.white
 
 @Composable
-fun CourseItem(course: Course, navController: NavController) {
+fun EnrollledCourseItem(course: Course, navController: NavController) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -35,15 +33,14 @@ fun CourseItem(course: Course, navController: NavController) {
             .fillMaxWidth()
             .clip(RoundedCornerShape(16.dp))
             .background(white)
-            .clickable { navController.navigate(Screen.DetailsScreen.route) }
+            .clickable { navController.navigate(Screen.EnrolledDetailScreen.route) }
     ) {
         AsyncImage(
             modifier = Modifier
                 .size(100.dp)
                 .padding(16.dp),
             model = course.image,
-            contentDescription = null,
-            contentScale = ContentScale.Crop
+            contentDescription = null
         )
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -52,7 +49,6 @@ fun CourseItem(course: Course, navController: NavController) {
                 .fillMaxWidth()
                 .padding(end = 16.dp)
         ) {
-            // Title
             Column {
                 Text(
                     text = course.title,
@@ -94,17 +90,8 @@ fun CourseItem(course: Course, navController: NavController) {
             Column(
                 horizontalAlignment = Alignment.End
             ) {
-                Icon(
-                    imageVector = Icons.Default.Favorite,
-                    contentDescription = "Favorite",
-                    tint = colorPrimary
-                )
-                Spacer(
-                    modifier = Modifier
-                        .height(6.dp)
-                )
                 Text(
-                    text = "$${course.price}",
+                    text = "25%",
                     fontSize = 16.sp,
                     color = colorPrimary,
                     fontWeight = FontWeight.Bold

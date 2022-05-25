@@ -13,11 +13,13 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.vku.learnzone.component.CourseItem
 import com.vku.learnzone.ui.theme.*
+import com.vku.learnzone.utils.Data
 
 @Composable
 fun WishlistScreen(navController: NavController) {
     Column(
         modifier = Modifier
+            .fillMaxSize()
             .background(ghost_white)
             .verticalScroll(rememberScrollState())
             .padding(bottom = 30.dp)
@@ -36,10 +38,9 @@ fun WishlistScreen(navController: NavController) {
                 modifier = Modifier
                     .fillMaxSize()
             ) {
-                for (i in 1..7) {
-                    // item
+                Data.courseList.forEach {
                     CourseItem(
-                        icon = "https://store.soft365.vn/wp-content/uploads/2018/10/logo-2.png",
+                        course = it,
                         navController = navController
                     )
                     Spacer(modifier = Modifier.height(16.dp))

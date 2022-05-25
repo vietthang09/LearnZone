@@ -4,11 +4,13 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
@@ -22,17 +24,19 @@ fun CategoryButton(icon: String, navController: NavController) {
             .size(72.dp)
             .background(
                 color = white,
-                shape = RoundedCornerShape(18.dp)
+                shape = CircleShape
             )
-            .padding(18.dp)
             .clickable {
                 navController.navigate(Screen.AwesomeCoursesScreen.route)
             }
     ) {
         AsyncImage(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .fillMaxSize()
+                .clip(CircleShape),
             model = icon,
-            contentDescription = null
+            contentDescription = null,
+            contentScale = ContentScale.Crop
         )
     }
 }

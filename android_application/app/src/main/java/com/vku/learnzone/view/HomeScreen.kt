@@ -21,6 +21,7 @@ import com.vku.learnzone.component.CategoryButton
 import com.vku.learnzone.component.CourseItem
 import com.vku.learnzone.navigation.Screen
 import com.vku.learnzone.ui.theme.*
+import com.vku.learnzone.utils.Data
 import com.vku.learnzone.viewmodel.CourseViewModel
 
 @Composable
@@ -212,9 +213,9 @@ fun CategoryView(navController: NavController) {
         modifier = Modifier
             .horizontalScroll(rememberScrollState())
     ) {
-        for (i in 1..7) {
+        Data.categoryList.forEach {
             CategoryButton(
-                icon = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png",
+                icon = it,
                 navController = navController
             )
             Spacer(modifier = Modifier.width(16.dp))
@@ -224,14 +225,13 @@ fun CategoryView(navController: NavController) {
 
 @Composable
 fun CourseItems(navController: NavController) {
-    // container
     Column(
         modifier = Modifier
             .fillMaxWidth()
     ) {
-        for (i in 1..3) {
+        Data.courseList.forEach {
             CourseItem(
-                icon = "https://store.soft365.vn/wp-content/uploads/2018/10/logo-2.png",
+                course = it,
                 navController = navController
             )
             Spacer(modifier = Modifier.height(16.dp))

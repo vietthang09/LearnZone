@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -14,15 +13,13 @@ import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.vku.learnzone.component.CategoryButton
 import com.vku.learnzone.ui.theme.colorPrimary
 import com.vku.learnzone.ui.theme.ghost_white
+import com.vku.learnzone.utils.Data
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -30,6 +27,7 @@ fun CategoriesScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .background(ghost_white)
+            .fillMaxSize()
     ) {
         Column(
             modifier = Modifier
@@ -60,16 +58,15 @@ fun CategoriesScreen(navController: NavController) {
                 )
             }
         }
-        val list = (1..50).map { it.toString() }
         LazyVerticalGrid(
             cells = GridCells.Fixed(4),
             content = {
-                items(list.size) { index ->
+                items(Data.categoryList.size) { index ->
                     Box(
                         modifier = Modifier.padding(5.dp)
                     ) {
                         CategoryButton(
-                            icon = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/1200px-Laravel.svg.png",
+                            icon = Data.categoryList[index],
                             navController = navController
                         )
                     }

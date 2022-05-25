@@ -25,7 +25,8 @@ fun Navigation() {
         listOf(
             Screen.DetailsScreen.route,
             Screen.AwesomeCoursesScreen.route,
-            Screen.CategoriesScreen.route
+            Screen.CategoriesScreen.route,
+            Screen.EnrolledDetailScreen.route
         )
     Scaffold(
         bottomBar = {
@@ -101,6 +102,9 @@ fun ScreenController(navController: NavHostController) {
         }
         composable(Screen.CategoriesScreen.route) {
             CategoriesScreen(navController = navController)
+        }
+        composable(Screen.EnrolledDetailScreen.route) {
+            EnrolledDetailScreen(navController = navController)
         }
     }
 }
