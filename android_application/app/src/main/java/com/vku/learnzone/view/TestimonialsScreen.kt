@@ -1,37 +1,29 @@
 package com.vku.learnzone.view
 
-import androidx.compose.foundation.*
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
-import coil.compose.AsyncImage
-import com.vku.learnzone.component.VideoItem
-import com.vku.learnzone.model.Course
-import com.vku.learnzone.navigation.Screen
+import com.vku.learnzone.component.TestimonialItem
 import com.vku.learnzone.ui.theme.colorPrimary
 import com.vku.learnzone.ui.theme.ghost_white
-import com.vku.learnzone.utils.Data
 
 @Composable
-fun EnrolledDetailScreen(navController: NavController) {
+fun TestimonialsScreen(navController: NavController) {
     Column(
         modifier = Modifier
-            .fillMaxSize()
             .background(ghost_white)
-            .verticalScroll(rememberScrollState())
+            .fillMaxSize()
     ) {
         Column(
             modifier = Modifier
@@ -56,42 +48,19 @@ fun EnrolledDetailScreen(navController: NavController) {
                 }
                 Spacer(modifier = Modifier.width(16.dp))
                 Text(
-                    text = "3D Design Basic",
+                    text = "Testimonials",
                     style = MaterialTheme.typography.h5,
                     fontWeight = FontWeight.Bold
                 )
-                Spacer(modifier = Modifier.width(16.dp))
-                Icon(
-                    imageVector = Icons.Default.Star,
-                    contentDescription = "",
-                    tint = colorPrimary,
-                    modifier = Modifier
-                        .padding(3.dp)
-                        .size(32.dp)
-                        .clickable { navController.navigate(Screen.RateCourseScreen.route) })
             }
-            Spacer(modifier = Modifier.height(16.dp))
-            AsyncImage(
-                model = "https://i.pinimg.com/originals/1c/d3/93/1cd3938d1aeafc32b21dc7e5566ef2be.png",
-                contentDescription = "",
-                contentScale = ContentScale.FillHeight,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(200.dp)
-                    .clip(RoundedCornerShape(8.dp))
-            )
         }
         Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(20.dp)
+            modifier = Modifier.padding(horizontal = 20.dp)
         ) {
-            Data.videoList.forEach {
-                VideoItem(it)
+            for (i in 1..5) {
+                TestimonialItem()
                 Spacer(modifier = Modifier.height(10.dp))
             }
         }
     }
 }
-
-

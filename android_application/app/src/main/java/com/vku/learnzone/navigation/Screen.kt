@@ -23,6 +23,9 @@ sealed class Screen(
     object AwesomeCoursesScreen : Screen("awesome_courses_screen")
     object CategoriesScreen : Screen("categories_screen")
     object EnrolledDetailScreen : Screen("enrolled_detail_screen")
+    object EnrollmentScreen : Screen("enrollment_screen")
+    object TestimonialsScreen : Screen("testimonials_screen")
+    object RateCourseScreen : Screen("rate_course_screen")
 }
 
 object Items {

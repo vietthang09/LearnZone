@@ -20,6 +20,7 @@ import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.vku.learnzone.component.TestimonialItem
 import com.vku.learnzone.component.VideoItem
+import com.vku.learnzone.navigation.Screen
 import com.vku.learnzone.ui.theme.*
 import com.vku.learnzone.utils.Data
 
@@ -102,7 +103,7 @@ fun DetailsScreen(navController: NavController) {
                         Spacer(modifier = Modifier.padding(20.dp))
                         VideosSection()
                         Spacer(modifier = Modifier.padding(10.dp))
-                        TestimonialsSection()
+                        TestimonialsSection(navController = navController)
                         Spacer(modifier = Modifier.padding(10.dp))
                         EnrollButton(navController)
                     }
@@ -172,7 +173,7 @@ fun EnrollButton(navController: NavController) {
         verticalArrangement = Arrangement.Bottom
     ) {
         Button(
-            onClick = { },
+            onClick = { navController.navigate(Screen.EnrollmentScreen.route) },
             modifier = Modifier
                 .padding(8.dp)
                 .fillMaxWidth()
@@ -229,7 +230,7 @@ fun VideosSection() {
 }
 
 @Composable
-fun TestimonialsSection() {
+fun TestimonialsSection(navController: NavController) {
     Row(
         modifier = Modifier
             .fillMaxWidth(),
@@ -241,7 +242,7 @@ fun TestimonialsSection() {
             style = MaterialTheme.typography.h6,
             color = white
         )
-        TextButton(onClick = {}) {
+        TextButton(onClick = { navController.navigate(Screen.TestimonialsScreen.route) }) {
             Text(
                 text = "See all",
                 color = white

@@ -11,6 +11,12 @@ object Data {
         "https://icons-for-free.com/download-icon-brush+design+draw+drawing+icon-1320168140159902387_512.png",
         "https://cdn.iconscout.com/icon/free/png-256/hacker-15-448496.png",
         "https://cdn-icons-png.flaticon.com/512/2534/2534390.png",
+        "https://www.pngfind.com/pngs/m/492-4924931_i-will-design-icon-for-your-android-and.png",
+        "https://cdn-icons-png.flaticon.com/512/4659/4659027.png",
+        "https://icons.iconarchive.com/icons/atyourservice/service-categories/512/Cooking-icon.png",
+        "https://cleandye.com/wp-content/uploads/2020/01/English-icon.png",
+        "https://cdn-icons-png.flaticon.com/512/1377/1377974.png",
+        "https://cdn-icons-png.flaticon.com/512/3048/3048356.png"
     )
 
     val courseList: List<Course> = listOf(
