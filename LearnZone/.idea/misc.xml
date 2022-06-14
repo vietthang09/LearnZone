@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/vthcv/AndroidStudioProjects/LearnZone/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.105" />
+        <entry key="..\:/Users/vthcv/AndroidStudioProjects/LearnZone/app/src/main/res/drawable/ic_baseline_post_add_24.xml" value="0.1655" />
+        <entry key="..\:/Users/vthcv/AndroidStudioProjects/LearnZone/app/src/main/res/layout/activity_course_detail_screen.xml" value="0.14945652173913043" />
+        <entry key="..\:/Users/vthcv/AndroidStudioProjects/LearnZone/app/src/main/res/layout/activity_create_post_screen.xml" value="0.12409420289855072" />
+        <entry key="..\:/Users/vthcv/AndroidStudioProjects/LearnZone/app/src/main/res/layout/activity_learn_zone_application.xml" value="0.14945652173913043" />
+        <entry key="..\:/Users/vthcv/AndroidStudioProjects/LearnZone/app/src/main/res/layout/activity_login_screen.xml" value="0.14945652173913043" />
+        <entry key="..\:/Users/vthcv/AndroidStudioProjects/LearnZone/app/src/main/res/layout/activity_main.xml" value="0.1094224924012158" />
+        <entry key="..\:/Users/vthcv/AndroidStudioProjects/LearnZone/app/src/main/res/layout/activity_splash_screen.xml" value="0.12454710144927536" />
+        <entry key="..\:/Users/vthcv/AndroidStudioProjects/LearnZone/app/src/main/res/layout/assignment_item.xml" value="0.25" />
+        <entry key="..\:/Users/vthcv/AndroidStudioProjects/LearnZone/app/src/main/res/layout/comment_item.xml" value="0.25" />
+        <entry key="..\:/Users/vthcv/AndroidStudioProjects/LearnZone/app/src/main/res/layout/course_detail_screen.xml" value="0.20984759671746775" />
+        <entry key="..\:/Users/vthcv/AndroidStudioProjects/LearnZone/app/src/main/res/layout/course_item.xml" value="0.25" />
+        <entry key="..\:/Users/vthcv/AndroidStudioProjects/LearnZone/app/src/main/res/layout/create_post_screen.xml" value="0.22" />
+        <entry key="..\:/Users/vthcv/AndroidStudioProjects/LearnZone/app/src/main/res/layout/dialog_create_post.xml" value="0.12409420289855072" />
+        <entry key="..\:/Users/vthcv/AndroidStudioProjects/LearnZone/app/src/main/res/layout/forum_screen.xml" value="0.14945652173913043" />
+        <entry key="..\:/Users/vthcv/AndroidStudioProjects/LearnZone/app/src/main/res/layout/fragment_assignment.xml" value="0.12409420289855072" />
+        <entry key="..\:/Users/vthcv/AndroidStudioProjects/LearnZone/app/src/main/res/layout/fragment_courses.xml" value="0.22" />
+        <entry key="..\:/Users/vthcv/AndroidStudioProjects/LearnZone/app/src/main/res/layout/fragment_forum.xml" value="0.33" />
+        <entry key="..\:/Users/vthcv/AndroidStudioProjects/LearnZone/app/src/main/res/layout/fragment_home.xml" value="0.12421929215822346" />
+        <entry key="..\:/Users/vthcv/AndroidStudioProjects/LearnZone/app/src/main/res/layout/fragment_material.xml" value="0.12409420289855072" />
+        <entry key="..\:/Users/vthcv/AndroidStudioProjects/LearnZone/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
+        <entry key="..\:/Users/vthcv/AndroidStudioProjects/LearnZone/app/src/main/res/layout/learn_zone_application.xml" value="0.14945652173913043" />
+        <entry key="..\:/Users/vthcv/AndroidStudioProjects/LearnZone/app/src/main/res/layout/login_screen.xml" value="0.22" />
+        <entry key="..\:/Users/vthcv/AndroidStudioProjects/LearnZone/app/src/main/res/layout/material_item.xml" value="0.22" />
+        <entry key="..\:/Users/vthcv/AndroidStudioProjects/LearnZone/app/src/main/res/layout/post_detail_screen.xml" value="0.22" />
+        <entry key="..\:/Users/vthcv/AndroidStudioProjects/LearnZone/app/src/main/res/layout/post_item.xml" value="0.25" />
+        <entry key="..\:/Users/vthcv/AndroidStudioProjects/LearnZone/app/src/main/res/menu/bottom_nav_menu.xml" value="0.225" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

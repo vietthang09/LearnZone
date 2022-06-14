@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">LearnZone</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="have_a_great_day">Have a great day.</string>
+    <string name="greeting">Greeting</string>
+    <string name="recently_visited">Recently visited</string>
+    <string name="time_line">Time line</string>
+    <string name="course_image">Course Image</string>
+    <string name="assignments">Assignments</string>
+    <string name="what_s_on_your_mind">What\'s on your mind?</string>
+    <string name="leave_you_comment_here">Leave you comment here...</string>
+    <string name="logout">Logout</string>
+    <string name="student">Student</string>
+</resources>
